@@ -1,0 +1,99 @@
+\doxysection{Gauge.\+h}
+\hypertarget{_gauge_8h_source}{}\label{_gauge_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ knitting\ gauge\ calculator}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ GAUGE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ GAUGE\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <numbers>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Shape.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }Gauge\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ Gauge();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ class\ constructor}}
+\DoxyCodeLine{00017\ \ \ \ \ Gauge(\textcolor{keywordtype}{float}\ X,\ \textcolor{keywordtype}{float}\ Y,\ \textcolor{keywordtype}{int}\ Nsts,\ \textcolor{keywordtype}{int}\ Nrows,\ \textcolor{keywordtype}{float}\ needle\_size);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ to\ calculate\ the\ gauge\ we\ need\ swatch\ dimensions\ and\ num\ of\ stitches}}
+\DoxyCodeLine{00018\ \ \ \ \ \string~Gauge();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ destructor\ (no\ need\ for\ virtual:\ it\ should\ not\ inherit\ from\ anything)}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{/*\ *************************}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ **\ \ \ member\ functions\ \ **}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ \ *************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\ Swatch\ \_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ getX()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fX;\};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ getY()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fY;\};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ getNsts()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fNsts;\};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ getNrows()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fNrows;\};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ TensionFactor(\textcolor{keywordtype}{int}\ sts\_expected,\ \textcolor{keywordtype}{int}\ sts\_actual);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\ Area\ to\ cover\ \_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setA\_x(\textcolor{keywordtype}{float}\ area\_width)\ \{\ fA\_x\ =\ area\_width;\};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ setA\_y(\textcolor{keywordtype}{float}\ area\_height)\ \{\ fA\_y\ =\ area\_height;\};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasA\_x()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fA\_x.has\_value();\};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasA\_y()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fA\_y.has\_value();\};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ std::optional<float>\ getA\_x()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fA\_x;\};}
+\DoxyCodeLine{00041\ \ \ \ \ std::optional<float>\ getA\_y()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fA\_y;\};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\ Yarn\ \_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setLength(\textcolor{keywordtype}{float}\ length)\ \{\ fLength\_b\ =\ length;\};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ setWeight(\textcolor{keywordtype}{float}\ weight)\ \{\ fMass\_b\ =\ weight;\};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasLength()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fLength\_b.has\_value();\};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasWeight()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fMass\_b.has\_value();\};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ std::optional<float>\ getWeight()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fMass\_b;\};}
+\DoxyCodeLine{00051\ \ \ \ \ std::optional<float>\ getLength()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fLength\_b;\};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ getNeedle\_size()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fSize;\};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{float}\ g\_h(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{int}\ sts\_num);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ g\_v(\textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{int}\ rows\_num);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ sts\_in\_Area(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_shape}{Shape}}\&\ region,\ \textcolor{keywordtype}{float}\ g\_h,\ \textcolor{keywordtype}{float}\ g\_v);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ linear\_rho(\textcolor{keywordtype}{float}\ length\_ball,\ \textcolor{keywordtype}{float}\ mass\_ball);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ inverse\ functions\ of\ density}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{float}\ inWeight(\textcolor{keywordtype}{float}\ lenght,\ \textcolor{keywordtype}{float}\ rho);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ inLength(\textcolor{keywordtype}{float}\ mass,\ \textcolor{keywordtype}{float}\ rho);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ length/weight\ needed\ to\ knit\ a\ number\ of\ stitches\ =\ tot\_sts}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ yarn\_length\_required(\textcolor{keywordtype}{float}\ tot\_sts,\ \textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ yarn\_weight\_required(\textcolor{keywordtype}{float}\ total\_length,\ \textcolor{keywordtype}{float}\ rho);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ number\ of\ stitches\ knittable\ with\ a\ given\ length}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ sts\_in\_length(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ length);}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{/*\ *************************}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ \ \ \ **\ \ \ member\ variables\ \ **}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ \ \ \ *************************}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00073\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ swatch\ dimensions}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{float}\ fX;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [cm]}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ fY;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [cm]}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ fNsts;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ fNrows;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ area\ dimensions}}
+\DoxyCodeLine{00081\ \ \ \ \ std::optional<float>\ fA\_x;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ [cm]}}
+\DoxyCodeLine{00082\ \ \ \ \ std::optional<float>\ fA\_y;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ [cm]}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ yarn\ ball\ variables}}
+\DoxyCodeLine{00084\ \ \ \ \ std::optional<float>\ fLength\_b;\ \ \ \textcolor{comment}{//\ [m]}}
+\DoxyCodeLine{00085\ \ \ \ \ std::optional<float>\ fMass\_b;\ \ \ \ \ \textcolor{comment}{//\ [g]}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ needle\ dimensions}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [mm]}}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ ah\ okay,\ no\ I\ was\ used\ to\ root\ and\ I\ looked\ at\ an\ old\ readme\ file\ \textcolor{keywordflow}{for}\ a\ project\ which\ is\ the\ \textcolor{keyword}{template}\ i\textcolor{stringliteral}{'m\ using\ for\ this\ project\ but\ I\ forgot\ about\ root\ oosh!\ Is\ there\ a\ way\ to\ create\ a\ makefile?\ would\ it\ be\ useful?\ I\ think\ it'}d\ be\ really\ interesting\ and\ useful\ \textcolor{keywordflow}{for}\ my\ personal\ coding\ skills}
+
+\end{DoxyCode}

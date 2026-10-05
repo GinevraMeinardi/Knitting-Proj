@@ -1,0 +1,124 @@
+\doxysection{Stitch.\+h}
+\hypertarget{_stitch_8h_source}{}\label{_stitch_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ STITCH\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ STITCH\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <numbers>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ st\_type\ =\ K,P,\ m1L,\ m1R,\ K2tog....}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_stitch}{\string~Stitch}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\ Knit\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }K\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ K(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ fT;}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\ Purl\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }P\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ P(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ fT;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\ Slip\ knot\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }SlipKnot\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ SlipKnot(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ fYarnSize;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ fT;}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\ Cast\ on\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }CastOn\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ CastOn(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ fYarnSize;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ fT;}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{class\ }LongTail\_CO\ :\ \textcolor{keyword}{public}\ CastOn\{}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ LongTail\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{float}\ GetTailLength()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ GetBallLength()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{class\ }Thumb\_CO\ :\ \textcolor{keyword}{public}\ CastOn\{}
+\DoxyCodeLine{00079\ \ \ \ \ Thumb\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00081\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{class\ }Cable\_CO\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_cast_on}{CastOn}}\{}
+\DoxyCodeLine{00084\ \ \ \ \ Cable\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00086\ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_german_twist___c_o}{GermanTwist\_CO}}\ :\ \textcolor{keyword}{public}\ CastOn\{}
+\DoxyCodeLine{00089\ \ \ \ \ TGermanTwist\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{class\ }Figure8\_CO\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_cast_on}{CastOn}}\{}
+\DoxyCodeLine{00094\ \ \ \ \ Figure8\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00096\ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{class\ }Italian\_CO\ :\ \textcolor{keyword}{public}\ CastOn\{}
+\DoxyCodeLine{00099\ \ \ \ \ Italian\_CO(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{float}\ YarnLength()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00101\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\ Cast\ off\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{class\ }CastOff\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_stitch}{Stitch}}\ \{}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ CastOff(\textcolor{keywordtype}{float}\ needle\_size,\ \textcolor{keywordtype}{float}\ yarn\_size,\ \textcolor{keywordtype}{float}\ tension\ =\ 1.0f);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{float}\ fSize;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{float}\ fYarnSize;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{float}\ fT;}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

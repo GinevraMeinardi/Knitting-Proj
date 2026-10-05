@@ -1,0 +1,89 @@
+\doxysection{Shape.\+h}
+\hypertarget{_shape_8h_source}{}\label{_shape_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ different\ shapes\ area\ calculator}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ SHAPE\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ SHAPE\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <numbers>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shape}{Shape}}\{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ Area()\ \textcolor{keyword}{const}\ =\ 0;\ \ \ \ \ \textcolor{comment}{//\ constructor}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_shape}{\string~Shape}}()\ =\ \textcolor{keywordflow}{default};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ destructor}}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ building\ a\ constructor\ with\ virtual\ allows\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ to\ use\ dynamic\ binding}}
+\DoxyCodeLine{00022\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }Rectangle\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_shape}{Shape}}\{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ Rectangle(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ Area()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ fX,\ fY;}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }CircularSlice\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_shape}{Shape}}\{}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ the\ degrees\ are\ default\ to\ 360\ full\ circle}}
+\DoxyCodeLine{00042\ \ \ \ \ CircularSlice(\textcolor{keywordtype}{float}\ r);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ if\ you\ want\ just\ a\ slice}}
+\DoxyCodeLine{00044\ \ \ \ \ CircularSlice(\textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ deg);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ Area()\ \textcolor{keyword}{const\ override};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ fR;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [cm]}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{float}\ fDeg;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [°]}}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }Trapezoid\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_shape}{Shape}}\{}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ Trapezoid(\textcolor{keywordtype}{float}\ a,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ h);}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{float}\ Area()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ fA,\ fB,\ fH;}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{class\ }Triangle\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_shape}{Shape}}\{}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00070\ \textcolor{comment}{/*\ maybe\ i'll\ need\ a\ function\ for\ every\ kind\ of\ triangle\ there\ is}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ because\ the\ geometrical\ shape\ depends\ on\ the\ kind\ of\ increases}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ and\ decreases,\ but\ for\ now,\ just\ calculating\ the\ area,\ }}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ the\ general\ shape\ works\ fine}}
+\DoxyCodeLine{00074\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00075\ \ \ \ \ Triangle(\textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ h);}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ Area()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{float}\ fB,\ fH;}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

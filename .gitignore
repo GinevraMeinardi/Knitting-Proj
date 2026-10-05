@@ -1,0 +1,24 @@
+# Build C++
+*.exe
+*.o
+*.obj
+*.a
+*.dll
+*.so
+build/
+knit_calculator.exe
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor
+.vscode/
+.vs/
+.idea/
+
+# Segreti e file di sistema
+.env
+.DS_Store
