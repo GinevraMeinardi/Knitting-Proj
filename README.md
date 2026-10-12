@@ -6,8 +6,7 @@ C++20; script Python si occupano di fit e visualizzazione 3D
 (matplotlib, PyVista).
 
 ## Come funziona
-[Come modelli la singola maglia: curva, parametri, assunzioni.
-Cosa viene fittato in Python e su quali dati.]
+Stima la lunghezza di filato necessaria per una singola maglia attraverso diversi modelli geometrici
 
 ## Funzionalità
 - [x] Stima lunghezza del filato per un numero x di maglie in stockinette
@@ -32,7 +31,7 @@ cd percorso\del\progetto
 **Con g++ direttamente:**
 
 ```cmd
-g++ -std=c++20 Shape.cxx Swatch.cxx Test.C -o knit_calculator.exe
+g++ -std=c++20 Shape.cxx Swatch.cxx Stitch.cxx Test.C -o knit_calculator.exe
 knit_calculator.exe
 ```
 
